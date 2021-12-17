@@ -18,3 +18,5 @@ require (
 	xorm.io/builder v0.3.6-0.20190906062455-b937eb46ecfb
 	xorm.io/core v0.7.0
 )
+
+replace github.com/go-xorm/xorm v0.7.7 => github.com/Zoelov/xorm v0.7.8-0.20211217072653-7403ae288744
