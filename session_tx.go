@@ -4,6 +4,8 @@
 
 package xorm
 
+import "xorm.io/core"
+
 // Begin a transaction
 func (session *Session) Begin() error {
 	if session.isAutoCommit {
@@ -17,6 +19,14 @@ func (session *Session) Begin() error {
 		session.saveLastSQL("BEGIN TRANSACTION")
 	}
 	return nil
+}
+
+func (session *Session) PrepareTx(query string) (*core.Stmt, error) {
+	if session.tx != nil {
+		return session.tx.Prepare(query)
+	}
+
+	return nil, nil
 }
 
 // Rollback When using transaction, you can rollback if any error
